@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export const UserItem = ({ user: { login, avatar_url } }) => {
     return (
-        <div className='card shadow-md compact side bg-zinc-700'>
+        <div className='card shadow-md compact side bg-slate-700'>
             <div className="flex-row items-center space-x-4 card-body">
                 <div>
                     <div className="avatar">

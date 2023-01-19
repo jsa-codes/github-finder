@@ -8,16 +8,17 @@ import { NotFound } from './pages/NotFound'
 export default function App() {
   return (
     <Router>
-      <div className="flex flex-col justify-between h-screen bg-zinc-700 text-neutral-content">
+      <div className="flex flex-col justify-between h-screen bg-slate-700 text-neutral-content">
         <NavBar />
-        <main className='container mx-auto px-3 pb-12'></main>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/notfound' element={<NotFound />} />
-          <Route path='/*' element={<NotFound />} />
+        <main className='container mx-auto px-3 pb-12'>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/notfound' element={<NotFound />} />
+            <Route path='/*' element={<NotFound />} />
 
-        </Routes>
+          </Routes>
+        </main>
         <Footer />
       </div>
     </Router>
