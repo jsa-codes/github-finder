@@ -44,7 +44,7 @@ export const GithubProvider = ({ children }) => {
         setLoading()
 
 
-        const response = await fetch(`${GITHUB_URL}/users?${login}`, {
+        const response = await fetch(`${GITHUB_URL}/user?${login}`, {
             // headers: {
             //     Authorization: `token ${GITHUB_TOKEN}`
             // },

@@ -15,7 +15,6 @@ export const User = () => {
         getUser(params.login)
     }, [])
 
-    console.log(params.login);
 
     const {
         name,
@@ -38,7 +37,6 @@ export const User = () => {
         return <Spinner />
     }
 
-    console.log(user)
 
     return <>
         <div className="w-full mx-auto lg:w-10/12">
