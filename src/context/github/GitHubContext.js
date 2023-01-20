@@ -1,4 +1,5 @@
-import { createContext, useState } from 'react';
+import { createContext, useReducer } from 'react';
+import githubReducer from './GithubReducer';
 
 const GithubContext = createContext()
 
@@ -8,27 +9,73 @@ const GITHUB_URL = process.env.REACT_APP_GITHUB_URL
 
 export const GithubProvider = ({ children }) => {
 
-    const [users, setUsers] = useState([])
-    const [loading, setLoading] = useState(true)
+    const initialState = {
+        users: [],
+        user: {},
+        loading: false,
+    }
 
-    const fetchUsers = async () => {
-        const response = await fetch(`${GITHUB_URL}/users`, {
+    const [state, dispatch] = useReducer(githubReducer, initialState)
+
+    // Get  search results
+    const searchUsers = async (text) => {
+        setLoading()
+
+        const params = new URLSearchParams({
+            q: text
+        })
+
+        const response = await fetch(`${GITHUB_URL}/search/users?${params}`, {
             // headers: {
             //     Authorization: `token ${GITHUB_TOKEN}`
             // },
         }
         );
 
-        const data = await response.json()
+        const { items } = await response.json()
 
-        setUsers(data)
-        setLoading(false)
+        dispatch({
+            type: 'GET_USERS',
+            payload: items,
+        })
+    }
+    // Get single user
+    const getUser = async (login) => {
+        setLoading()
+
+
+        const response = await fetch(`${GITHUB_URL}/users?${login}`, {
+            // headers: {
+            //     Authorization: `token ${GITHUB_TOKEN}`
+            // },
+        }
+        );
+
+        if (response.status === 404) {
+            window.location = '/notfound';
+        } else {
+            const data = await response.json()
+
+            dispatch({
+                type: 'GET_USER',
+                payload: data,
+            })
+        }
     }
 
+    // Clear Users from state
+    const clearUsers = () => dispatch({ type: 'CLEAR_USERS' })
+
+    // Set loading
+    const setLoading = () => dispatch({ type: 'SET_LOADING' })
+
     return <GithubContext.Provider value={{
-        users,
-        loading,
-        fetchUsers,
+        users: state.users,
+        loading: state.loading,
+        user: state.user,
+        searchUsers,
+        clearUsers,
+        getUser,
     }}>
         {children}
     </GithubContext.Provider>
