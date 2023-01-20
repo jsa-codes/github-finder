@@ -14,7 +14,7 @@ export default function App() {
     <GithubProvider>
       <AlertProvider>
         <Router>
-          <div className="flex flex-col justify-between h-screen bg-slate-700 text-neutral-content">
+          <div className="flex flex-col justify-between min-h-screen bg-slate-700 text-neutral-content">
             <NavBar />
             <main className='container mx-auto px-3 pb-12'>
               <Alert />

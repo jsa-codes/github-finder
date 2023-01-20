@@ -51,10 +51,18 @@ export const User = () => {
                             <img src={avatar_url} alt="" />
                         </figure>
                         <div className="card-body justify-end">
-                            <h2 className="card-title mb-0">
-                                {user.name}
-                            </h2>
-                            <p>{user.login}</p>
+                            <h1 className="card-title mb-0">
+                                {name}
+                                <div className="ml-2 mr-1 badge badge-success">
+                                    {type}
+                                </div>
+                                {hireable && (
+                                    <div className="mx-1 badge badge-info">
+                                        Hireable
+                                    </div>
+                                )}
+                            </h1>
+                            <p>{bio}</p>
                         </div>
                     </div>
                 </div>
