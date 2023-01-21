@@ -51,19 +51,121 @@ export const User = () => {
                             <img src={avatar_url} alt="" />
                         </figure>
                         <div className="card-body justify-end">
-                            <h1 className="card-title mb-0">
-                                {name}
-                                <div className="ml-2 mr-1 badge badge-success">
-                                    {type}
-                                </div>
-                                {hireable && (
+                            <h2 className="card-title mb-0">{name}</h2>
+                            <p>{login}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='col-span-2'>
+                    <div className='mb-6'>
+                        <h1 className='text-3xl card-title'>
+                            {name}
+                            <div className="ml-2 mr-1 badge badge-success">
+                                {type}
+                            </div>
+                            {
+                                hireable && (
                                     <div className="mx-1 badge badge-info">
                                         Hireable
                                     </div>
-                                )}
-                            </h1>
-                            <p>{bio}</p>
+                                )
+                            }
+                        </h1>
+                        <p>{bio}</p>
+                        <div className="mt-4 card-actions">
+                            <a href={html_url} target='_blank' rel='noreferrer' className='btn btn-outline bg-white'>
+                                Visit Github Profile
+                            </a>
                         </div>
+                    </div>
+
+                    <div className="w-full rounded-lg shadow-md stats bg-slate-700 text-neutral-content">
+                        {
+                            location && (
+                                <div className="stat bg-slate-700">
+                                    <div className="stat-title text-md">Location</div>
+                                    <div className="text-lg stat-value">{location}</div>
+                                </div>
+                            )
+                        }
+                        {
+                            blog && (
+                                <div className="stat bg-slate-700">
+                                    <div className="stat-title text-md">Website</div>
+                                    <div className="text-lg stat-value">
+                                        <a
+                                            href={`https://${blog}`}
+                                            target='_blank' rel='noreferrer'
+                                        >{blog}
+                                        </a>
+                                    </div>
+                                </div>
+                            )
+                        }
+                        {
+                            twitter_username && (
+                                <div className="stat bg-slate-700">
+                                    <div className="stat-title text-md">Twitter</div>
+                                    <div className="text-lg stat-value">
+                                        <a
+                                            href={`https://twitter.com/${twitter_username}`}
+                                            target='_blank' rel='noreferrer'
+                                        >{blog}
+                                        </a>
+                                    </div>
+                                </div>
+                            )
+                        }
+                    </div>
+                </div>
+            </div>
+            <div className="w-full py-5 mb-6 rounded-lg shadow-md bg-slate-700 stats">
+                <div className="stat">
+                    <div className="stat-figure text-secondary">
+                        <FaUsers className='text-3xl md:text-5xl' />
+                    </div>
+                    <div className="stat-title pr-5 text-neutral-content">
+                        Followers
+                    </div>
+                    <div className="stat-value pr-5 text-3xl md:text-4xl text-neutral-content">
+                        {followers}
+                    </div>
+                </div>
+
+                <div className="stat">
+                    <div className="stat-figure text-secondary">
+                        <FaUserFriends className='text-3xl md:text-5xl' />
+                    </div>
+                    <div className="stat-title pr-5 text-neutral-content">
+                        Following
+                    </div>
+                    <div className="stat-value pr-5 text-3xl md:text-4xl text-neutral-content">
+                        {following}
+                    </div>
+                </div>
+
+                <div className="stat">
+                    <div className="stat-figure text-secondary">
+                        <FaCodepen className='text-3xl md:text-5xl' />
+                    </div>
+                    <div className="stat-title pr-5 text-neutral-content">
+                        Public Repos
+                    </div>
+                    <div className="stat-value pr-5 text-3xl md:text-4xl text-neutral-content">
+                        {public_repos}
+                    </div>
+                </div>
+
+                <div className="stat">
+                    <div className="stat-figure text-secondary">
+                        <FaStore className='text-3xl md:text-5xl' />
+                    </div>
+                    <div className="stat-title pr-5 text-neutral-content">
+                        Public Gists
+                    </div>
+                    <div className="stat-value pr-5 text-3xl md:text-4xl text-neutral-content">
+                        {public_gists}
                     </div>
                 </div>
             </div>

@@ -26,9 +26,9 @@ export const GithubProvider = ({ children }) => {
         })
 
         const response = await fetch(`${GITHUB_URL}/search/users?${params}`, {
-            // headers: {
-            //     Authorization: `token ${GITHUB_TOKEN}`
-            // },
+            //     headers: {
+            //         Authorization: `token ${GITHUB_TOKEN}`
+            //     },
         }
         );
 
