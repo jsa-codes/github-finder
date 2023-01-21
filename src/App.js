@@ -4,10 +4,10 @@ import { Footer } from './components/layout/Footer'
 import { Alert } from './components/layout/Alert'
 import { Home } from './pages/Home'
 import { About } from './pages/About'
+import { User } from './pages/User'
 import { NotFound } from './pages/NotFound'
 import { GithubProvider } from './context/github/GitHubContext'
 import { AlertProvider } from './context/alert/AlertContext'
-import { User } from './pages/User'
 
 export default function App() {
   return (
